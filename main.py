@@ -5,17 +5,13 @@ import qr_interface
 import sound
 import tkinter as tk
 
-# Initialize Tkinter root window
 root = qr_interface.root
 root.title("QR Code Scanner")
 
-# Label to display status
 label = qr_interface.label
 
-# Previous scanned QR code
 prev_scanned_code = ""
 
-# Button to display history
 def display_history():
     history_text = ""
     for item in history:
@@ -41,7 +37,7 @@ while True:
         myData = barcode.data.decode('utf-8')
         print(myData)
 
-        if myData != prev_scanned_code:  # Check if new QR code is different
+        if myData != prev_scanned_code:
             if myData in myDataList:
                 myOutput = "Authorized"
                 myColor = (0, 255,0)
@@ -53,14 +49,13 @@ while True:
                 qr_interface.update_label("Un-Authorized")
                 sound.play_sound("Un-Authorized")
 
-            # Append to history
             history.append({"data": myData, "status": myOutput})
 
-            # Log to file
+        
             with open("log.txt", "a") as log_file:
                 log_file.write(f"Scanned QR Code: {myData}, Status: {myOutput}\n")
 
-            prev_scanned_code = myData  # Update previous scanned code
+            prev_scanned_code = myData 
 
         pts = np.array([barcode.polygon], np.int32)
         pts = pts.reshape((-1, 1, 2))
