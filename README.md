@@ -64,6 +64,3 @@ After detecting the QR code regions, the system refines and processes them to ex
 
 3. Follow the on-screen instructions to interact with the QR Code Authentication system.
 
-## Contributing
-
-We welcome contributions! Please check out the [Contributing Guidelines](CONTRIBUTING.md) for more details.
